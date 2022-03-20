@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 
+{% block title %}Projects{% endblock %}
+
 {% block content %}
 
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod numquam porro eos!</p>
+<p>{{message}}</p>
+
+{% if age > 10 %}
+<p>age is greater than 10</p>
+{% elif age == 10 %}
+<p>age is equal to 10</p>
+{% else %}
+<p>age is less than 10</p>
+{% endif %}
+
+
+<!-- loop through project list -->
+<ul>
+    {% for project in project_list %}
+
+        <li>Title: <a href="{% url 'project' project.id %}">{{ project.title }}</a> --- {{ project.description }} </li>
+
+    {% endfor %}
+</ul>
+
 
 {% endblock %}
